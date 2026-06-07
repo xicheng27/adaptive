@@ -12,6 +12,7 @@ import {
   STYLE_LABELS,
   type Review,
 } from '@/types'
+import Image from 'next/image'
 import Header from '@/app/components/Header'
 import ReviewForm from '@/app/components/ReviewForm'
 import ReviewList from '@/app/components/ReviewList'
@@ -66,31 +67,49 @@ export default function BrandDetailPage() {
 
         {/* Hero */}
         <div className="bg-white rounded-2xl border border-gray-200 p-6 mb-6">
-          <div className="flex items-start justify-between gap-4 flex-wrap">
-            <div>
-              <div className="flex items-center gap-2 flex-wrap mb-1">
-                <h1 className="text-2xl font-bold text-gray-900">{brand.name}</h1>
-                {brand.badge && (
-                  <span className="text-xs bg-indigo-50 text-indigo-700 border border-indigo-200 px-2 py-0.5 rounded-full font-medium">
-                    {brand.badge}
-                  </span>
-                )}
+          <div className="flex items-start gap-5 flex-wrap">
+            {/* Logo */}
+            {brand.logo ? (
+              <div className="w-20 h-20 rounded-2xl border border-gray-100 bg-gray-50 flex items-center justify-center p-2 shrink-0 shadow-sm">
+                <Image
+                  src={brand.logo}
+                  alt={`${brand.name} logo`}
+                  width={64}
+                  height={64}
+                  className="object-contain w-full h-full"
+                  unoptimized
+                />
               </div>
-              {brand.company && (
-                <p className="text-sm text-gray-500">by {brand.company}</p>
-              )}
-            </div>
+            ) : (
+              <div className="w-20 h-20 rounded-2xl bg-indigo-50 flex items-center justify-center text-4xl shrink-0">
+                {DISABILITY_ICONS[brand.categories[0]]}
+              </div>
+            )}
 
-            {/* Price + links */}
-            <div className="flex items-center gap-3">
-              <div className="flex items-center gap-1" title={PRICE_LABEL[brand.priceRange]}>
-                {[1, 2, 3].map((n) => (
-                  <span
-                    key={n}
-                    className={`w-2.5 h-2.5 rounded-full ${n <= priceDots ? 'bg-indigo-500' : 'bg-gray-200'}`}
-                  />
-                ))}
-                <span className="text-xs text-gray-500 ml-1">{PRICE_LABEL[brand.priceRange]}</span>
+            <div className="flex-1 min-w-0">
+              <div className="flex items-start justify-between gap-4 flex-wrap">
+                <div>
+                  <div className="flex items-center gap-2 flex-wrap mb-1">
+                    <h1 className="text-2xl font-bold text-gray-900">{brand.name}</h1>
+                    {brand.badge && (
+                      <span className="text-xs bg-indigo-50 text-indigo-700 border border-indigo-200 px-2 py-0.5 rounded-full font-medium">
+                        {brand.badge}
+                      </span>
+                    )}
+                  </div>
+                  {brand.company && (
+                    <p className="text-sm text-gray-500">by {brand.company}</p>
+                  )}
+                </div>
+                <div className="flex items-center gap-1 shrink-0" title={PRICE_LABEL[brand.priceRange]}>
+                  {[1, 2, 3].map((n) => (
+                    <span
+                      key={n}
+                      className={`w-2.5 h-2.5 rounded-full ${n <= priceDots ? 'bg-indigo-500' : 'bg-gray-200'}`}
+                    />
+                  ))}
+                  <span className="text-xs text-gray-500 ml-1">{PRICE_LABEL[brand.priceRange]}</span>
+                </div>
               </div>
             </div>
           </div>

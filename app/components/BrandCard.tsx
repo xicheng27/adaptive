@@ -1,5 +1,7 @@
 'use client'
 
+import Image from 'next/image'
+import { useState } from 'react'
 import { Brand, DISABILITY_ICONS, DISABILITY_LABELS } from '@/types'
 
 interface BrandCardProps {
@@ -12,31 +14,55 @@ const PRICE_LABEL: Record<string, string> = {
   '$$$': 'Premium',
 }
 
-const CATEGORY_GRADIENT: Record<string, string> = {
-  wheelchair: 'from-blue-100 to-indigo-100',
-  'limb-difference': 'from-violet-100 to-purple-100',
-  arthritis: 'from-amber-100 to-orange-100',
-  sensory: 'from-teal-100 to-cyan-100',
-  paralysis: 'from-indigo-100 to-blue-100',
-  burns: 'from-rose-100 to-pink-100',
-  visual: 'from-emerald-100 to-green-100',
-  kids: 'from-yellow-100 to-amber-100',
+const CATEGORY_BG: Record<string, string> = {
+  wheelchair: 'bg-blue-50',
+  'limb-difference': 'bg-violet-50',
+  arthritis: 'bg-amber-50',
+  sensory: 'bg-teal-50',
+  paralysis: 'bg-indigo-50',
+  burns: 'bg-rose-50',
+  visual: 'bg-emerald-50',
+  kids: 'bg-yellow-50',
+}
+
+function BrandLogo({ logo, name, icon }: { logo?: string; name: string; icon: string }) {
+  const [failed, setFailed] = useState(false)
+
+  if (logo && !failed) {
+    return (
+      <div className="w-14 h-14 rounded-2xl bg-white border border-gray-100 shadow-sm flex items-center justify-center overflow-hidden p-1.5">
+        <Image
+          src={logo}
+          alt={`${name} logo`}
+          width={48}
+          height={48}
+          className="object-contain w-full h-full"
+          onError={() => setFailed(true)}
+          unoptimized
+        />
+      </div>
+    )
+  }
+
+  return (
+    <div className="w-14 h-14 rounded-2xl bg-white/70 border border-white/50 shadow-sm flex items-center justify-center text-2xl">
+      {icon}
+    </div>
+  )
 }
 
 export default function BrandCard({ brand }: BrandCardProps) {
   const primaryCategory = brand.categories[0]
-  const gradient = CATEGORY_GRADIENT[primaryCategory] ?? 'from-gray-100 to-slate-100'
+  const bg = CATEGORY_BG[primaryCategory] ?? 'bg-gray-50'
   const icon = DISABILITY_ICONS[primaryCategory]
 
   return (
-    <div className="group bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-xl hover:shadow-gray-200/60 hover:-translate-y-1 transition-all duration-250 flex flex-col">
-      {/* Card header strip */}
-      <div className={`bg-gradient-to-br ${gradient} px-5 pt-5 pb-4 flex items-start justify-between`}>
-        <div className="w-12 h-12 rounded-2xl bg-white/70 backdrop-blur flex items-center justify-center text-2xl shadow-sm">
-          {icon}
-        </div>
+    <div className="group bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-xl hover:shadow-gray-200/60 hover:-translate-y-1 transition-all duration-200 flex flex-col">
+      {/* Card header */}
+      <div className={`${bg} px-5 pt-5 pb-4 flex items-start justify-between gap-3`}>
+        <BrandLogo logo={brand.logo} name={brand.name} icon={icon} />
         {brand.badge && (
-          <span className="text-xs bg-white/80 backdrop-blur text-indigo-700 border border-indigo-100 px-2.5 py-1 rounded-full font-semibold shadow-sm">
+          <span className="text-xs bg-white/80 backdrop-blur text-indigo-700 border border-indigo-100 px-2.5 py-1 rounded-full font-semibold shadow-sm shrink-0">
             {brand.badge}
           </span>
         )}
@@ -72,14 +98,11 @@ export default function BrandCard({ brand }: BrandCardProps) {
         {/* Meta row */}
         <div className="flex items-center justify-between text-xs text-gray-400 pt-3 border-t border-gray-100 mb-4">
           <div className="flex items-center gap-2">
-            <span
-              className="font-semibold text-gray-600"
-              title={PRICE_LABEL[brand.priceRange]}
-            >
+            <span className="font-semibold text-gray-600" title={PRICE_LABEL[brand.priceRange]}>
               {brand.priceRange}
             </span>
             <span className="text-gray-200">·</span>
-            <span className="text-gray-400">
+            <span>
               {brand.shipping.slice(0, 3).join(', ')}
               {brand.shipping.length > 3 ? ` +${brand.shipping.length - 3}` : ''}
             </span>

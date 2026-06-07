@@ -20,6 +20,7 @@ export interface Brand {
   id: string
   name: string
   company?: string
+  logo?: string
   description: string
   adaptiveDescription?: string
   url: string
