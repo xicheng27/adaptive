@@ -1,8 +1,7 @@
 'use client'
 
-import Image from 'next/image'
-import { useState } from 'react'
 import { Brand, DISABILITY_ICONS, DISABILITY_LABELS } from '@/types'
+import BrandAvatar from './BrandAvatar'
 
 interface BrandCardProps {
   brand: Brand
@@ -15,52 +14,24 @@ const PRICE_LABEL: Record<string, string> = {
 }
 
 const CATEGORY_BG: Record<string, string> = {
-  wheelchair: 'bg-blue-50',
+  wheelchair:        'bg-blue-50',
   'limb-difference': 'bg-violet-50',
-  arthritis: 'bg-amber-50',
-  sensory: 'bg-teal-50',
-  paralysis: 'bg-indigo-50',
-  burns: 'bg-rose-50',
-  visual: 'bg-emerald-50',
-  kids: 'bg-yellow-50',
-}
-
-function BrandLogo({ logo, name, icon }: { logo?: string; name: string; icon: string }) {
-  const [failed, setFailed] = useState(false)
-
-  if (logo && !failed) {
-    return (
-      <div className="w-14 h-14 rounded-2xl bg-white border border-gray-100 shadow-sm flex items-center justify-center overflow-hidden p-1.5">
-        <Image
-          src={logo}
-          alt={`${name} logo`}
-          width={48}
-          height={48}
-          className="object-contain w-full h-full"
-          onError={() => setFailed(true)}
-          unoptimized
-        />
-      </div>
-    )
-  }
-
-  return (
-    <div className="w-14 h-14 rounded-2xl bg-white/70 border border-white/50 shadow-sm flex items-center justify-center text-2xl">
-      {icon}
-    </div>
-  )
+  arthritis:         'bg-amber-50',
+  sensory:           'bg-teal-50',
+  paralysis:         'bg-indigo-50',
+  burns:             'bg-rose-50',
+  visual:            'bg-emerald-50',
+  kids:              'bg-yellow-50',
 }
 
 export default function BrandCard({ brand }: BrandCardProps) {
-  const primaryCategory = brand.categories[0]
-  const bg = CATEGORY_BG[primaryCategory] ?? 'bg-gray-50'
-  const icon = DISABILITY_ICONS[primaryCategory]
+  const bg = CATEGORY_BG[brand.categories[0]] ?? 'bg-gray-50'
 
   return (
     <div className="group bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-xl hover:shadow-gray-200/60 hover:-translate-y-1 transition-all duration-200 flex flex-col">
       {/* Card header */}
       <div className={`${bg} px-5 pt-5 pb-4 flex items-start justify-between gap-3`}>
-        <BrandLogo logo={brand.logo} name={brand.name} icon={icon} />
+        <BrandAvatar name={brand.name} size="md" rounded="2xl" />
         {brand.badge && (
           <span className="text-xs bg-white/80 backdrop-blur text-indigo-700 border border-indigo-100 px-2.5 py-1 rounded-full font-semibold shadow-sm shrink-0">
             {brand.badge}

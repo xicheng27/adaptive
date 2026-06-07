@@ -12,8 +12,8 @@ import {
   STYLE_LABELS,
   type Review,
 } from '@/types'
-import Image from 'next/image'
 import Header from '@/app/components/Header'
+import BrandAvatar from '@/app/components/BrandAvatar'
 import ReviewForm from '@/app/components/ReviewForm'
 import ReviewList from '@/app/components/ReviewList'
 import dynamic from 'next/dynamic'
@@ -68,23 +68,7 @@ export default function BrandDetailPage() {
         {/* Hero */}
         <div className="bg-white rounded-2xl border border-gray-200 p-6 mb-6">
           <div className="flex items-start gap-5 flex-wrap">
-            {/* Logo */}
-            {brand.logo ? (
-              <div className="w-20 h-20 rounded-2xl border border-gray-100 bg-gray-50 flex items-center justify-center p-2 shrink-0 shadow-sm">
-                <Image
-                  src={brand.logo}
-                  alt={`${brand.name} logo`}
-                  width={64}
-                  height={64}
-                  className="object-contain w-full h-full"
-                  unoptimized
-                />
-              </div>
-            ) : (
-              <div className="w-20 h-20 rounded-2xl bg-indigo-50 flex items-center justify-center text-4xl shrink-0">
-                {DISABILITY_ICONS[brand.categories[0]]}
-              </div>
-            )}
+            <BrandAvatar name={brand.name} size="lg" rounded="2xl" />
 
             <div className="flex-1 min-w-0">
               <div className="flex items-start justify-between gap-4 flex-wrap">
@@ -333,28 +317,29 @@ export default function BrandDetailPage() {
                 <a
                   key={b.id}
                   href={`/brand/${b.id}`}
-                  className="bg-white rounded-xl border border-gray-200 p-5 hover:shadow-md hover:border-indigo-200 transition-all group"
+                  className="bg-white rounded-xl border border-gray-200 p-5 hover:shadow-md hover:border-indigo-200 transition-all group flex gap-4 items-start"
                 >
-                  <div className="flex items-start justify-between gap-2 mb-2">
-                    <div>
-                      <p className="font-semibold text-gray-900 text-sm group-hover:text-indigo-600 transition-colors">
+                  <BrandAvatar name={b.name} size="sm" rounded="xl" />
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-start justify-between gap-2 mb-1">
+                      <p className="font-semibold text-gray-900 text-sm group-hover:text-indigo-600 transition-colors leading-tight">
                         {b.name}
                       </p>
-                      {b.company && (
-                        <p className="text-xs text-gray-400 mt-0.5">by {b.company}</p>
+                      {b.badge && (
+                        <span className="shrink-0 text-xs bg-indigo-50 text-indigo-700 border border-indigo-200 px-2 py-0.5 rounded-full">
+                          {b.badge}
+                        </span>
                       )}
                     </div>
-                    {b.badge && (
-                      <span className="shrink-0 text-xs bg-indigo-50 text-indigo-700 border border-indigo-200 px-2 py-0.5 rounded-full">
-                        {b.badge}
-                      </span>
+                    {b.company && (
+                      <p className="text-xs text-gray-400 mb-1">by {b.company}</p>
                     )}
-                  </div>
-                  <p className="text-xs text-gray-500 leading-relaxed line-clamp-2">{b.description}</p>
-                  <div className="flex gap-1 mt-3">
-                    {b.categories.map((c) => (
-                      <span key={c} title={c} className="text-sm">{DISABILITY_ICONS[c]}</span>
-                    ))}
+                    <p className="text-xs text-gray-500 leading-relaxed line-clamp-2">{b.description}</p>
+                    <div className="flex gap-1 mt-2">
+                      {b.categories.map((c) => (
+                        <span key={c} title={c} className="text-sm">{DISABILITY_ICONS[c]}</span>
+                      ))}
+                    </div>
                   </div>
                 </a>
               ))}

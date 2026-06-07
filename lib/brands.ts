@@ -5,7 +5,6 @@ export const brands: Brand[] = [
     id: 'tommy-adaptive',
     name: 'Tommy Adaptive',
     company: 'Tommy Hilfiger',
-    logo: 'https://logo.clearbit.com/tommy.com',
     description:
       'A full adaptive clothing line featuring magnetic button closures, Velcro fasteners, open-back and side-entry options, and seated-fit silhouettes. Covers everyday wear, denim, outerwear, and footwear for adults and kids.',
     adaptiveDescription:
@@ -26,7 +25,6 @@ export const brands: Brand[] = [
     id: 'nike-flyease',
     name: 'Nike FlyEase',
     company: 'Nike',
-    logo: 'https://logo.clearbit.com/nike.com',
     description:
       'Hands-free footwear technology designed for easy entry and exit. The Go FlyEase sneaker can be put on and taken off without bending over or using hands. Offers multiple styles for adults and kids.',
     adaptiveDescription:
@@ -47,7 +45,6 @@ export const brands: Brand[] = [
     id: 'zappos-adaptive',
     name: 'Zappos Adaptive',
     company: 'Zappos',
-    logo: 'https://logo.clearbit.com/zappos.com',
     description:
       'A dedicated adaptive fashion storefront curated from hundreds of brands. Includes clothing, shoes, and accessories with easy-on features. Excellent filters by disability type and feature.',
     adaptiveDescription:
@@ -64,7 +61,6 @@ export const brands: Brand[] = [
   {
     id: 'iz-adaptive',
     name: 'IZ Adaptive',
-    logo: 'https://logo.clearbit.com/izadaptive.com',
     description:
       'Canadian adaptive clothing brand founded by a wheelchair user. Specializes in seated-fit tops, bottoms, and outerwear that look great whether sitting or standing. Form meets function.',
     adaptiveDescription:
@@ -84,7 +80,6 @@ export const brands: Brand[] = [
   {
     id: 'silverts',
     name: "Silvert's Adaptive Clothing",
-    logo: 'https://logo.clearbit.com/silverts.com',
     description:
       'Adaptive and easy-dressing clothing for seniors and people with disabilities since 1949. Specializes in open-back garments, side-snap pants, and Velcro shoes. A trusted name with broad selection.',
     adaptiveDescription:
@@ -101,7 +96,6 @@ export const brands: Brand[] = [
   {
     id: 'buck-and-buck',
     name: 'Buck & Buck',
-    logo: 'https://logo.clearbit.com/buckandbuck.com',
     description:
       'Pioneering adaptive clothing brand since 1982. Offers a full range of open-back and side-snap clothing, bibs, aprons, and accessories designed for people with physical disabilities.',
     adaptiveDescription:
@@ -118,7 +112,6 @@ export const brands: Brand[] = [
   {
     id: 'joe-and-bella',
     name: 'Joe & Bella',
-    logo: 'https://logo.clearbit.com/joeandbella.com',
     description:
       "Modern adaptive clothing that looks like mainstream fashion. Designed for people with arthritis, Parkinson's, and limited mobility. Features hidden magnetic and Velcro closures that mimic buttons and snaps.",
     adaptiveDescription:
@@ -138,7 +131,6 @@ export const brands: Brand[] = [
   {
     id: 'slick-chicks',
     name: 'Slick Chicks',
-    logo: 'https://logo.clearbit.com/slickchicksonline.com',
     description:
       'Adaptive underwear and intimates using magnetic closures on the sides instead of waistbands. Designed for wheelchair users, amputees, and anyone who struggles with traditional underwear.',
     adaptiveDescription:
@@ -156,7 +148,6 @@ export const brands: Brand[] = [
   {
     id: 'rebirth-garments',
     name: 'Rebirth Garments',
-    logo: 'https://logo.clearbit.com/rebirthgarments.com',
     description:
       'Size-inclusive, gender-expansive adaptive clothing made for people with disabilities, scars, and body differences. Every piece is handmade and celebrates the full spectrum of ability.',
     adaptiveDescription:
@@ -176,7 +167,6 @@ export const brands: Brand[] = [
   {
     id: 'care-wear',
     name: 'Care+Wear',
-    logo: 'https://logo.clearbit.com/careandwear.com',
     description:
       'Medical-grade adaptive wear designed with healthcare providers. Offers PICC line covers, post-surgical clothing, and soft recovery wear that is functional, dignified, and comfortable.',
     adaptiveDescription:
@@ -195,7 +185,6 @@ export const brands: Brand[] = [
     id: 'target-adaptive',
     name: 'Target Adaptive (Cat & Jack)',
     company: 'Target',
-    logo: 'https://logo.clearbit.com/target.com',
     description:
       "Target's Cat & Jack and A New Day lines include adaptive options: tagless, sensory-friendly kids clothes, and easy-dressing adult clothing. Affordable and widely available.",
     adaptiveDescription:
@@ -214,7 +203,6 @@ export const brands: Brand[] = [
     id: 'gap-adaptive',
     name: 'Gap Adaptive',
     company: 'Gap',
-    logo: 'https://logo.clearbit.com/gap.com',
     description:
       "Gap's adaptive line offers easy-on clothing for adults and kids — featuring magnetic closures, elastic waists, and sensory-friendly construction while keeping the classic Gap look.",
     adaptiveDescription:
@@ -232,7 +220,6 @@ export const brands: Brand[] = [
     id: 'lands-end-adaptive',
     name: "Lands' End Adaptive",
     company: "Lands' End",
-    logo: 'https://logo.clearbit.com/landsend.com',
     description:
       "Lands' End offers a dedicated adaptive line with seated-fit pants, easy-dressing tops, and adaptive swimwear. Known for quality fabrics and size inclusivity.",
     adaptiveDescription:
@@ -249,7 +236,6 @@ export const brands: Brand[] = [
   {
     id: 'ffora',
     name: 'Ffora',
-    logo: 'https://logo.clearbit.com/ffora.com',
     description:
       'Stylish wheelchair bag and accessory system that clips securely to any wheelchair. Modular bags that work like a hands-free purse or backpack for daily use.',
     adaptiveDescription:
@@ -268,7 +254,6 @@ export const brands: Brand[] = [
   {
     id: 'adaptations-by-adrian',
     name: 'Adaptations by Adrian',
-    logo: 'https://logo.clearbit.com/adaptationsbyadrian.com',
     description:
       'Custom adaptive clothing tailored to individual needs. Specializes in one-of-a-kind garments modified for wheelchair users, amputees, and people with specific dressing challenges.',
     adaptiveDescription:
@@ -286,7 +271,6 @@ export const brands: Brand[] = [
     id: 'primary-adaptive',
     name: 'Primary Adaptive',
     company: 'Primary',
-    logo: 'https://logo.clearbit.com/primary.com',
     description:
       'Bright, colorful, tagless sensory-friendly kids clothing. Simple construction with no itchy seams, tags, or tight elastic. Easy-on designs perfect for children with sensory processing differences.',
     adaptiveDescription:
@@ -304,7 +288,6 @@ export const brands: Brand[] = [
   {
     id: 'open-style-lab',
     name: 'Open Style Lab',
-    logo: 'https://logo.clearbit.com/openstylelab.org',
     description:
       'A research-driven nonprofit designing wearable solutions for people with disabilities. Products include the FFORA bag and research partnerships. Focus on visual and mobility impairments.',
     adaptiveDescription:
@@ -324,7 +307,6 @@ export const brands: Brand[] = [
     id: 'columbia-adaptive',
     name: 'Columbia Adaptive Outerwear',
     company: 'Columbia Sportswear',
-    logo: 'https://logo.clearbit.com/columbia.com',
     description:
       "Columbia's adaptive outdoor collection includes one-handed zip systems, wheelchair-friendly outerwear with extended back coverage, and adaptive ski jackets.",
     adaptiveDescription:

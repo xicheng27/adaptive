@@ -9,6 +9,7 @@ import FilterPanel from '@/app/components/FilterPanel'
 import BrandGrid from '@/app/components/BrandGrid'
 import AIChat from '@/app/components/AIChat'
 import AIRecommend from '@/app/components/AIRecommend'
+import BrandAvatar from '@/app/components/BrandAvatar'
 
 const FEATURED_IDS = ['tommy-adaptive', 'nike-flyease', 'iz-adaptive', 'rebirth-garments', 'joe-and-bella']
 
@@ -152,15 +153,7 @@ export default function BrowsePage() {
                     className="snap-start shrink-0 w-56 bg-white rounded-2xl border border-gray-200 p-5 hover:shadow-lg hover:border-indigo-200 hover:-translate-y-0.5 transition-all duration-200 group"
                   >
                     <div className="flex items-start justify-between gap-2 mb-3">
-                      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-100 to-violet-100 flex items-center justify-center text-xl">
-                        {brand.categories[0] === 'wheelchair' ? '🦽'
-                          : brand.categories[0] === 'arthritis' ? '🤲'
-                          : brand.categories[0] === 'sensory' ? '🧠'
-                          : brand.categories[0] === 'visual' ? '👁️'
-                          : brand.categories[0] === 'burns' ? '🩹'
-                          : brand.categories[0] === 'kids' ? '👶'
-                          : brand.categories[0] === 'limb-difference' ? '🦾' : '👕'}
-                      </div>
+                      <BrandAvatar name={brand.name} size="sm" rounded="xl" />
                       {brand.badge && (
                         <span className="text-xs bg-indigo-50 text-indigo-700 border border-indigo-200 px-2 py-0.5 rounded-full font-medium shrink-0">
                           {brand.badge}
