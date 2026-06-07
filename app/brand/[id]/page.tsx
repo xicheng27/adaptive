@@ -1,14 +1,20 @@
 'use client'
 
 import { useParams } from 'next/navigation'
+import { useEffect, useState } from 'react'
 import { brands } from '@/lib/brands'
+import { getReviews } from '@/lib/reviews'
+import { getUser } from '@/lib/user'
 import {
   DISABILITY_ICONS,
   DISABILITY_LABELS,
   STYLE_ICONS,
   STYLE_LABELS,
+  type Review,
 } from '@/types'
 import Header from '@/app/components/Header'
+import ReviewForm from '@/app/components/ReviewForm'
+import ReviewList from '@/app/components/ReviewList'
 import dynamic from 'next/dynamic'
 
 const WorldMap = dynamic(() => import('@/app/components/WorldMap'), { ssr: false })
@@ -24,6 +30,13 @@ const PRICE_DOTS: Record<string, number> = { '$': 1, '$$': 2, '$$$': 3 }
 export default function BrandDetailPage() {
   const { id } = useParams<{ id: string }>()
   const brand = brands.find((b) => b.id === id)
+  const [reviews, setReviews] = useState<Review[]>([])
+  const [userName, setUserName] = useState<string | null>(null)
+
+  useEffect(() => {
+    if (brand) setReviews(getReviews(brand.id))
+    setUserName(getUser()?.name ?? null)
+  }, [brand])
 
   if (!brand) {
     return (
@@ -166,10 +179,31 @@ export default function BrandDetailPage() {
               )}
             </section>
 
-            {/* Reviews placeholder — Feature 3 */}
-            <section className="bg-white rounded-xl border border-gray-200 p-6">
-              <h2 className="text-base font-semibold text-gray-900 mb-1">Reviews</h2>
-              <p className="text-sm text-gray-400 italic">Reviews coming soon.</p>
+            {/* Reviews */}
+            <section className="bg-white rounded-xl border border-gray-200 p-6 space-y-6">
+              <h2 className="text-base font-semibold text-gray-900">Reviews</h2>
+
+              <ReviewList reviews={reviews} />
+
+              <div className="pt-4 border-t border-gray-100">
+                {userName ? (
+                  <>
+                    <p className="text-sm font-medium text-gray-700 mb-4">
+                      Leave a review as <span className="text-indigo-600">{userName}</span>
+                    </p>
+                    <ReviewForm
+                      brandId={brand.id}
+                      userName={userName}
+                      onSubmit={(r) => setReviews((prev) => [r, ...prev])}
+                    />
+                  </>
+                ) : (
+                  <p className="text-sm text-gray-500">
+                    <a href="/" className="text-indigo-600 hover:underline">Sign in</a>{' '}
+                    to leave a review.
+                  </p>
+                )}
+              </div>
             </section>
           </div>
 
