@@ -2,8 +2,9 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'AdaptFit — Adaptive Fashion Finder',
-  description: 'Find adaptive clothing brands for your specific needs. Curated resources for people with physical disabilities.',
+  title: 'WearAble — Adaptive Fashion Finder',
+  description:
+    'Discover adaptive clothing brands for your disability, style, and location — powered by AI recommendations and real user reviews.',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

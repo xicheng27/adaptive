@@ -1,6 +1,11 @@
 'use client'
 
-import { DisabilityType, DISABILITY_LABELS, DISABILITY_ICONS } from '@/types'
+import {
+  DisabilityType,
+  StyleCategory,
+  DISABILITY_LABELS,
+  DISABILITY_ICONS,
+} from '@/types'
 
 const ALL_DISABILITIES: DisabilityType[] = [
   'wheelchair', 'limb-difference', 'arthritis', 'sensory',
@@ -9,8 +14,10 @@ const ALL_DISABILITIES: DisabilityType[] = [
 
 interface FilterPanelProps {
   selectedDisabilities: DisabilityType[]
+  selectedStyles: StyleCategory[]
   location: string
   onDisabilityToggle: (d: DisabilityType) => void
+  onStyleToggle: (s: StyleCategory) => void
   onLocationChange: (loc: string) => void
   onClearAll: () => void
   resultCount: number
@@ -24,6 +31,8 @@ export default function FilterPanel({
   onClearAll,
   resultCount,
 }: FilterPanelProps) {
+  const hasFilters = selectedDisabilities.length > 0 || !!location
+
   return (
     <div className="bg-white rounded-xl border border-gray-200 p-5 space-y-5">
       <div>
@@ -66,8 +75,9 @@ export default function FilterPanel({
       </div>
 
       <div className="pt-1 border-t border-gray-100 text-sm text-gray-500">
-        Showing <span className="font-semibold text-indigo-600">{resultCount}</span> brand{resultCount !== 1 ? 's' : ''}
-        {(selectedDisabilities.length > 0 || location) && (
+        Showing <span className="font-semibold text-indigo-600">{resultCount}</span>{' '}
+        brand{resultCount !== 1 ? 's' : ''}
+        {hasFilters && (
           <button
             onClick={onClearAll}
             className="ml-3 text-xs text-red-500 hover:text-red-700 underline"
