@@ -8,6 +8,7 @@ import Header from '@/app/components/Header'
 import FilterPanel from '@/app/components/FilterPanel'
 import BrandGrid from '@/app/components/BrandGrid'
 import AIChat from '@/app/components/AIChat'
+import AIRecommend from '@/app/components/AIRecommend'
 
 export default function BrowsePage() {
   const [selectedDisabilities, setSelectedDisabilities] = useState<DisabilityType[]>([])
@@ -15,6 +16,7 @@ export default function BrowsePage() {
   const [location, setLocation] = useState('')
   const [preferredStyles, setPreferredStyles] = useState<StyleCategory[]>([])
   const [chatOpen, setChatOpen] = useState(false)
+  const [recommendOpen, setRecommendOpen] = useState(false)
   const [personalized, setPersonalized] = useState(false)
 
   // Load preferences from user profile on mount
@@ -64,11 +66,20 @@ export default function BrowsePage() {
               Discover clothing brands designed for your needs — filter by disability type, style, and region.
             </p>
           </div>
-          {personalized && (
-            <span className="shrink-0 inline-flex items-center gap-1.5 bg-indigo-50 text-indigo-700 text-xs font-medium px-3 py-1.5 rounded-full border border-indigo-200 mt-1">
-              ✨ Personalised for you
-            </span>
-          )}
+          <div className="flex items-center gap-3 shrink-0 mt-1 flex-wrap">
+            {personalized && (
+              <span className="inline-flex items-center gap-1.5 bg-indigo-50 text-indigo-700 text-xs font-medium px-3 py-1.5 rounded-full border border-indigo-200">
+                ✨ Personalised for you
+              </span>
+            )}
+            <button
+              onClick={() => setRecommendOpen(true)}
+              className="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors shadow-sm"
+            >
+              <span>🤖</span>
+              Get AI Recommendations
+            </button>
+          </div>
         </div>
 
         <div className="flex flex-col lg:flex-row gap-6">
@@ -95,6 +106,11 @@ export default function BrowsePage() {
         open={chatOpen}
         onClose={() => setChatOpen(false)}
         selectedDisabilities={selectedDisabilities}
+        location={location}
+      />
+      <AIRecommend
+        open={recommendOpen}
+        onClose={() => setRecommendOpen(false)}
         location={location}
       />
     </>

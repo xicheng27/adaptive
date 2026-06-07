@@ -11,6 +11,7 @@ import {
   STYLE_LABELS,
   STYLE_ICONS,
 } from '@/types'
+import AIRecommend from '@/app/components/AIRecommend'
 
 const DISABILITIES: DisabilityType[] = [
   'wheelchair', 'limb-difference', 'arthritis', 'sensory',
@@ -32,6 +33,7 @@ export default function OnboardingPage() {
   const [location, setLocation] = useState('')
   const [disabilities, setDisabilities] = useState<DisabilityType[]>([])
   const [styles, setStyles] = useState<StyleCategory[]>([])
+  const [recommendOpen, setRecommendOpen] = useState(false)
 
   useEffect(() => {
     const user = getUser()
@@ -158,9 +160,17 @@ export default function OnboardingPage() {
                 )
               })}
             </div>
-            <p className="text-xs text-gray-400 mt-4">
-              Not sure? You can skip this step and filter later.
-            </p>
+            <div className="mt-5 pt-4 border-t border-gray-100">
+              <p className="text-xs text-gray-500 mb-2">Not sure where to start?</p>
+              <button
+                type="button"
+                onClick={() => setRecommendOpen(true)}
+                className="inline-flex items-center gap-2 text-sm font-medium text-indigo-600 hover:text-indigo-700 border border-indigo-200 hover:border-indigo-400 px-4 py-2 rounded-lg transition-colors"
+              >
+                <span>🤖</span>
+                Get AI Recommendations instead
+              </button>
+            </div>
           </div>
         )}
 
@@ -238,6 +248,12 @@ export default function OnboardingPage() {
           </button>
         </p>
       </div>
+
+      <AIRecommend
+        open={recommendOpen}
+        onClose={() => setRecommendOpen(false)}
+        location={location}
+      />
     </div>
   )
 }
