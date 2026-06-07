@@ -52,14 +52,22 @@ export default function BrandCard({ brand }: BrandCardProps) {
         </div>
       </div>
 
-      <a
-        href={brand.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="mt-1 block text-center text-sm font-medium text-indigo-600 border border-indigo-200 rounded-lg py-2 hover:bg-indigo-50 transition-colors"
-      >
-        Visit {brand.name} &rarr;
-      </a>
+      <div className="mt-1 flex gap-2">
+        <a
+          href={`/brand/${brand.id}`}
+          className="flex-1 block text-center text-sm font-medium text-white bg-indigo-600 rounded-lg py-2 hover:bg-indigo-700 transition-colors"
+        >
+          View Profile
+        </a>
+        <a
+          href={brand.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex-1 block text-center text-sm font-medium text-indigo-600 border border-indigo-200 rounded-lg py-2 hover:bg-indigo-50 transition-colors"
+        >
+          Visit Site &rarr;
+        </a>
+      </div>
     </div>
   )
 }
