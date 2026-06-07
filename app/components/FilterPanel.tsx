@@ -5,7 +5,13 @@ import {
   StyleCategory,
   DISABILITY_LABELS,
   DISABILITY_ICONS,
+  STYLE_LABELS,
+  STYLE_ICONS,
 } from '@/types'
+
+const ALL_STYLES: StyleCategory[] = [
+  'casual', 'sportswear', 'formal', 'old-money', 'streetwear', 'minimalist',
+]
 
 const ALL_DISABILITIES: DisabilityType[] = [
   'wheelchair', 'limb-difference', 'arthritis', 'sensory',
@@ -25,13 +31,15 @@ interface FilterPanelProps {
 
 export default function FilterPanel({
   selectedDisabilities,
+  selectedStyles,
   location,
   onDisabilityToggle,
+  onStyleToggle,
   onLocationChange,
   onClearAll,
   resultCount,
 }: FilterPanelProps) {
-  const hasFilters = selectedDisabilities.length > 0 || !!location
+  const hasFilters = selectedDisabilities.length > 0 || selectedStyles.length > 0 || !!location
 
   return (
     <div className="bg-white rounded-xl border border-gray-200 p-5 space-y-5">
@@ -54,6 +62,31 @@ export default function FilterPanel({
               >
                 <span>{DISABILITY_ICONS[d]}</span>
                 <span>{DISABILITY_LABELS[d]}</span>
+              </button>
+            )
+          })}
+        </div>
+      </div>
+
+      <div>
+        <h2 className="text-sm font-semibold text-gray-700 uppercase tracking-wide mb-3">
+          Style
+        </h2>
+        <div className="flex flex-wrap gap-2">
+          {ALL_STYLES.map((s) => {
+            const active = selectedStyles.includes(s)
+            return (
+              <button
+                key={s}
+                onClick={() => onStyleToggle(s)}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium border transition-colors ${
+                  active
+                    ? 'bg-indigo-600 border-indigo-600 text-white'
+                    : 'bg-white border-gray-300 text-gray-600 hover:border-indigo-400 hover:text-indigo-600'
+                }`}
+              >
+                <span>{STYLE_ICONS[s]}</span>
+                <span>{STYLE_LABELS[s]}</span>
               </button>
             )
           })}
