@@ -14,6 +14,7 @@ import {
 } from '@/types'
 import Header from '@/app/components/Header'
 import BrandAvatar from '@/app/components/BrandAvatar'
+import BrandLogo from '@/app/components/BrandLogo'
 import ReviewForm from '@/app/components/ReviewForm'
 import ReviewList from '@/app/components/ReviewList'
 import dynamic from 'next/dynamic'
@@ -68,7 +69,10 @@ export default function BrandDetailPage() {
         {/* Hero */}
         <div className="bg-white rounded-2xl border border-gray-200 p-6 mb-6">
           <div className="flex items-start gap-5 flex-wrap">
-            <BrandAvatar name={brand.name} size="lg" rounded="2xl" />
+            {brand.logo
+              ? <BrandLogo logo={brand.logo} name={brand.name} size="lg" rounded="2xl" />
+              : <BrandAvatar name={brand.name} size="lg" rounded="2xl" />
+            }
 
             <div className="flex-1 min-w-0">
               <div className="flex items-start justify-between gap-4 flex-wrap">
@@ -319,7 +323,10 @@ export default function BrandDetailPage() {
                   href={`/brand/${b.id}`}
                   className="bg-white rounded-xl border border-gray-200 p-5 hover:shadow-md hover:border-indigo-200 transition-all group flex gap-4 items-start"
                 >
-                  <BrandAvatar name={b.name} size="sm" rounded="xl" />
+                  {b.logo
+                    ? <BrandLogo logo={b.logo} name={b.name} size="sm" rounded="xl" />
+                    : <BrandAvatar name={b.name} size="sm" rounded="xl" />
+                  }
                   <div className="flex-1 min-w-0">
                     <div className="flex items-start justify-between gap-2 mb-1">
                       <p className="font-semibold text-gray-900 text-sm group-hover:text-indigo-600 transition-colors leading-tight">

@@ -10,6 +10,7 @@ import BrandGrid from '@/app/components/BrandGrid'
 import AIChat from '@/app/components/AIChat'
 import AIRecommend from '@/app/components/AIRecommend'
 import BrandAvatar from '@/app/components/BrandAvatar'
+import BrandLogo from '@/app/components/BrandLogo'
 
 const FEATURED_IDS = ['tommy-adaptive', 'nike-flyease', 'iz-adaptive', 'rebirth-garments', 'joe-and-bella']
 
@@ -153,7 +154,10 @@ export default function BrowsePage() {
                     className="snap-start shrink-0 w-56 bg-white rounded-2xl border border-gray-200 p-5 hover:shadow-lg hover:border-indigo-200 hover:-translate-y-0.5 transition-all duration-200 group"
                   >
                     <div className="flex items-start justify-between gap-2 mb-3">
-                      <BrandAvatar name={brand.name} size="sm" rounded="xl" />
+                      {brand.logo
+                        ? <BrandLogo logo={brand.logo} name={brand.name} size="sm" rounded="xl" />
+                        : <BrandAvatar name={brand.name} size="sm" rounded="xl" />
+                      }
                       {brand.badge && (
                         <span className="text-xs bg-indigo-50 text-indigo-700 border border-indigo-200 px-2 py-0.5 rounded-full font-medium shrink-0">
                           {brand.badge}

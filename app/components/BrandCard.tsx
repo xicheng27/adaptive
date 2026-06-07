@@ -2,6 +2,7 @@
 
 import { Brand, DISABILITY_ICONS, DISABILITY_LABELS } from '@/types'
 import BrandAvatar from './BrandAvatar'
+import BrandLogo from './BrandLogo'
 
 interface BrandCardProps {
   brand: Brand
@@ -31,7 +32,10 @@ export default function BrandCard({ brand }: BrandCardProps) {
     <div className="group bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-xl hover:shadow-gray-200/60 hover:-translate-y-1 transition-all duration-200 flex flex-col">
       {/* Card header */}
       <div className={`${bg} px-5 pt-5 pb-4 flex items-start justify-between gap-3`}>
-        <BrandAvatar name={brand.name} size="md" rounded="2xl" />
+        {brand.logo
+          ? <BrandLogo logo={brand.logo} name={brand.name} size="md" rounded="2xl" />
+          : <BrandAvatar name={brand.name} size="md" rounded="2xl" />
+        }
         {brand.badge && (
           <span className="text-xs bg-white/80 backdrop-blur text-indigo-700 border border-indigo-100 px-2.5 py-1 rounded-full font-semibold shadow-sm shrink-0">
             {brand.badge}
