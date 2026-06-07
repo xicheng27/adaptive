@@ -10,16 +10,18 @@ interface BrandGridProps {
 export default function BrandGrid({ brands }: BrandGridProps) {
   if (brands.length === 0) {
     return (
-      <div className="text-center py-16 text-gray-400">
-        <div className="text-5xl mb-4">🔍</div>
-        <p className="text-lg font-medium text-gray-500">No brands match your filters</p>
-        <p className="text-sm mt-1">Try removing some filters or broadening your location</p>
+      <div className="text-center py-20 bg-white rounded-2xl border border-gray-200">
+        <div className="text-6xl mb-4">🔍</div>
+        <p className="text-lg font-bold text-gray-700 mb-1">No brands match your filters</p>
+        <p className="text-sm text-gray-400 max-w-xs mx-auto">
+          Try removing a filter or broadening your location to see more results.
+        </p>
       </div>
     )
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
       {brands.map((brand) => (
         <BrandCard key={brand.id} brand={brand} />
       ))}
