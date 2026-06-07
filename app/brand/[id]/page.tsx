@@ -2,7 +2,7 @@
 
 import { useParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
-import { brands } from '@/lib/brands'
+import { brands, getSimilarBrands } from '@/lib/brands'
 import { getReviews } from '@/lib/reviews'
 import { getUser } from '@/lib/user'
 import {
@@ -30,6 +30,7 @@ const PRICE_DOTS: Record<string, number> = { '$': 1, '$$': 2, '$$$': 3 }
 export default function BrandDetailPage() {
   const { id } = useParams<{ id: string }>()
   const brand = brands.find((b) => b.id === id)
+  const similarBrands = brand ? getSimilarBrands(brand.id) : []
   const [reviews, setReviews] = useState<Review[]>([])
   const [userName, setUserName] = useState<string | null>(null)
 
@@ -227,6 +228,25 @@ export default function BrandDetailPage() {
               </div>
             </section>
 
+            {/* Age Groups */}
+            <section className="bg-white rounded-xl border border-gray-200 p-5">
+              <h2 className="text-sm font-semibold text-gray-700 uppercase tracking-wide mb-3">
+                For
+              </h2>
+              <div className="flex gap-2">
+                {brand.ageGroups.includes('adults') && (
+                  <span className="flex items-center gap-1 text-xs bg-gray-100 text-gray-700 px-2.5 py-1 rounded-full">
+                    🧑 Adults
+                  </span>
+                )}
+                {brand.ageGroups.includes('kids') && (
+                  <span className="flex items-center gap-1 text-xs bg-amber-50 text-amber-700 border border-amber-200 px-2.5 py-1 rounded-full">
+                    👶 Kids
+                  </span>
+                )}
+              </div>
+            </section>
+
             {/* Product Categories */}
             {brand.productCategories && brand.productCategories.length > 0 && (
               <section className="bg-white rounded-xl border border-gray-200 p-5">
@@ -285,6 +305,43 @@ export default function BrandDetailPage() {
             </section>
           </div>
         </div>
+        {/* Similar Brands */}
+        {similarBrands.length > 0 && (
+          <section className="mt-8">
+            <h2 className="text-lg font-semibold text-gray-900 mb-4">Similar Brands</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {similarBrands.map((b) => (
+                <a
+                  key={b.id}
+                  href={`/brand/${b.id}`}
+                  className="bg-white rounded-xl border border-gray-200 p-5 hover:shadow-md hover:border-indigo-200 transition-all group"
+                >
+                  <div className="flex items-start justify-between gap-2 mb-2">
+                    <div>
+                      <p className="font-semibold text-gray-900 text-sm group-hover:text-indigo-600 transition-colors">
+                        {b.name}
+                      </p>
+                      {b.company && (
+                        <p className="text-xs text-gray-400 mt-0.5">by {b.company}</p>
+                      )}
+                    </div>
+                    {b.badge && (
+                      <span className="shrink-0 text-xs bg-indigo-50 text-indigo-700 border border-indigo-200 px-2 py-0.5 rounded-full">
+                        {b.badge}
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-xs text-gray-500 leading-relaxed line-clamp-2">{b.description}</p>
+                  <div className="flex gap-1 mt-3">
+                    {b.categories.map((c) => (
+                      <span key={c} title={c} className="text-sm">{DISABILITY_ICONS[c]}</span>
+                    ))}
+                  </div>
+                </a>
+              ))}
+            </div>
+          </section>
+        )}
       </main>
     </>
   )

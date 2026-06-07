@@ -355,6 +355,21 @@ export function filterBrands(
   })
 }
 
+export function getSimilarBrands(currentId: string, limit = 3): Brand[] {
+  const current = brands.find((b) => b.id === currentId)
+  if (!current) return []
+  return brands
+    .filter((b) => b.id !== currentId)
+    .map((b) => ({
+      brand: b,
+      score: current.categories.filter((c) => b.categories.includes(c)).length,
+    }))
+    .filter(({ score }) => score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, limit)
+    .map(({ brand }) => brand)
+}
+
 export function sortBrandsByStyle(
   filteredBrands: Brand[],
   preferredStyles: StyleCategory[],
