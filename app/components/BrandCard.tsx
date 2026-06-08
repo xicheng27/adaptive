@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import { Brand, DISABILITY_ICONS, DISABILITY_LABELS } from '@/types'
 import BrandAvatar from './BrandAvatar'
 import BrandLogo from './BrandLogo'
@@ -14,33 +15,52 @@ const PRICE_LABEL: Record<string, string> = {
   '$$$': 'Premium',
 }
 
-const CATEGORY_BG: Record<string, string> = {
-  wheelchair:        'bg-blue-50',
-  'limb-difference': 'bg-violet-50',
-  arthritis:         'bg-amber-50',
-  sensory:           'bg-teal-50',
-  paralysis:         'bg-indigo-50',
-  burns:             'bg-rose-50',
-  visual:            'bg-emerald-50',
-  kids:              'bg-yellow-50',
+const CATEGORY_GRADIENT: Record<string, string> = {
+  wheelchair:        'from-blue-600 to-blue-400',
+  'limb-difference': 'from-violet-600 to-violet-400',
+  arthritis:         'from-amber-500 to-orange-400',
+  sensory:           'from-teal-600 to-teal-400',
+  paralysis:         'from-indigo-600 to-indigo-400',
+  burns:             'from-rose-600 to-rose-400',
+  visual:            'from-emerald-600 to-emerald-400',
+  kids:              'from-yellow-500 to-orange-400',
 }
 
 export default function BrandCard({ brand }: BrandCardProps) {
-  const bg = CATEGORY_BG[brand.categories[0]] ?? 'bg-gray-50'
+  const [imgFailed, setImgFailed] = useState(false)
+  const gradient = CATEGORY_GRADIENT[brand.categories[0]] ?? 'from-indigo-600 to-violet-500'
+  const showImage = !!brand.image && !imgFailed
 
   return (
     <div className="group bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-xl hover:shadow-gray-200/60 hover:-translate-y-1 transition-all duration-200 flex flex-col">
       {/* Card header */}
-      <div className={`${bg} px-5 pt-5 pb-4 flex items-start justify-between gap-3`}>
-        {brand.logo
-          ? <BrandLogo logo={brand.logo} name={brand.name} size="md" rounded="2xl" />
-          : <BrandAvatar name={brand.name} size="md" rounded="2xl" />
-        }
-        {brand.badge && (
-          <span className="text-xs bg-white/80 backdrop-blur text-indigo-700 border border-indigo-100 px-2.5 py-1 rounded-full font-semibold shadow-sm shrink-0">
-            {brand.badge}
-          </span>
+      <div className={`relative h-36 overflow-hidden ${!showImage ? `bg-gradient-to-br ${gradient}` : ''}`}>
+        {showImage && (
+          <img
+            src={brand.image}
+            alt=""
+            aria-hidden
+            className="absolute inset-0 w-full h-full object-cover"
+            loading="lazy"
+            onError={() => setImgFailed(true)}
+          />
         )}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/25 to-transparent" />
+
+        {brand.badge && (
+          <div className="absolute top-3 right-3">
+            <span className="text-xs bg-white/90 backdrop-blur text-indigo-700 border border-white/40 px-2.5 py-1 rounded-full font-semibold shadow-sm">
+              {brand.badge}
+            </span>
+          </div>
+        )}
+
+        <div className="absolute bottom-3 left-4">
+          {brand.logo
+            ? <BrandLogo logo={brand.logo} name={brand.name} size="md" rounded="2xl" />
+            : <BrandAvatar name={brand.name} size="md" rounded="2xl" />
+          }
+        </div>
       </div>
 
       {/* Content */}

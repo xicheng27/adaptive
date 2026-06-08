@@ -4,6 +4,7 @@ export const brands: Brand[] = [
   {
     id: 'tommy-adaptive',
     logo: 'https://www.google.com/s2/favicons?domain=tommy.com&sz=128',
+    image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=600&h=240&q=80',
     name: 'Tommy Adaptive',
     company: 'Tommy Hilfiger',
     description:
@@ -25,6 +26,7 @@ export const brands: Brand[] = [
   {
     id: 'nike-flyease',
     logo: 'https://www.google.com/s2/favicons?domain=nike.com&sz=128',
+    image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&h=240&q=80',
     name: 'Nike FlyEase',
     company: 'Nike',
     description:
@@ -46,6 +48,7 @@ export const brands: Brand[] = [
   {
     id: 'zappos-adaptive',
     logo: 'https://www.google.com/s2/favicons?domain=zappos.com&sz=128',
+    image: 'https://images.unsplash.com/photo-1600185365483-26d7a4cc4519?auto=format&fit=crop&w=600&h=240&q=80',
     name: 'Zappos Adaptive',
     company: 'Zappos',
     description:
@@ -64,6 +67,7 @@ export const brands: Brand[] = [
   {
     id: 'iz-adaptive',
     logo: 'https://www.google.com/s2/favicons?domain=izadaptive.com&sz=128',
+    image: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=600&h=240&q=80',
     name: 'IZ Adaptive',
     description:
       'Canadian adaptive clothing brand founded by a wheelchair user. Specializes in seated-fit tops, bottoms, and outerwear that look great whether sitting or standing. Form meets function.',
@@ -84,6 +88,7 @@ export const brands: Brand[] = [
   {
     id: 'silverts',
     logo: 'https://www.google.com/s2/favicons?domain=silverts.com&sz=128',
+    image: 'https://images.unsplash.com/photo-1489987707849-d9d97f8b10af?auto=format&fit=crop&w=600&h=240&q=80',
     name: "Silvert's Adaptive Clothing",
     description:
       'Adaptive and easy-dressing clothing for seniors and people with disabilities since 1949. Specializes in open-back garments, side-snap pants, and Velcro shoes. A trusted name with broad selection.',
@@ -101,6 +106,7 @@ export const brands: Brand[] = [
   {
     id: 'buck-and-buck',
     logo: 'https://www.google.com/s2/favicons?domain=buckandbuck.com&sz=128',
+    image: 'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=600&h=240&q=80',
     name: 'Buck & Buck',
     description:
       'Pioneering adaptive clothing brand since 1982. Offers a full range of open-back and side-snap clothing, bibs, aprons, and accessories designed for people with physical disabilities.',
@@ -118,6 +124,7 @@ export const brands: Brand[] = [
   {
     id: 'joe-and-bella',
     logo: 'https://www.google.com/s2/favicons?domain=joeandbella.com&sz=128',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&h=240&q=80',
     name: 'Joe & Bella',
     description:
       "Modern adaptive clothing that looks like mainstream fashion. Designed for people with arthritis, Parkinson's, and limited mobility. Features hidden magnetic and Velcro closures that mimic buttons and snaps.",
@@ -138,6 +145,7 @@ export const brands: Brand[] = [
   {
     id: 'slick-chicks',
     logo: 'https://www.google.com/s2/favicons?domain=slickchicksonline.com&sz=128',
+    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=600&h=240&q=80',
     name: 'Slick Chicks',
     description:
       'Adaptive underwear and intimates using magnetic closures on the sides instead of waistbands. Designed for wheelchair users, amputees, and anyone who struggles with traditional underwear.',
@@ -156,6 +164,7 @@ export const brands: Brand[] = [
   {
     id: 'rebirth-garments',
     logo: 'https://www.google.com/s2/favicons?domain=rebirthgarments.com&sz=128',
+    image: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=600&h=240&q=80',
     name: 'Rebirth Garments',
     description:
       'Size-inclusive, gender-expansive adaptive clothing made for people with disabilities, scars, and body differences. Every piece is handmade and celebrates the full spectrum of ability.',
@@ -176,6 +185,7 @@ export const brands: Brand[] = [
   {
     id: 'care-wear',
     logo: 'https://www.google.com/s2/favicons?domain=careandwear.com&sz=128',
+    image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=600&h=240&q=80',
     name: 'Care+Wear',
     description:
       'Medical-grade adaptive wear designed with healthcare providers. Offers PICC line covers, post-surgical clothing, and soft recovery wear that is functional, dignified, and comfortable.',
@@ -194,6 +204,7 @@ export const brands: Brand[] = [
   {
     id: 'target-adaptive',
     logo: 'https://www.google.com/s2/favicons?domain=target.com&sz=128',
+    image: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=600&h=240&q=80',
     name: 'Target Adaptive (Cat & Jack)',
     company: 'Target',
     description:
@@ -213,6 +224,7 @@ export const brands: Brand[] = [
   {
     id: 'gap-adaptive',
     logo: 'https://www.google.com/s2/favicons?domain=gap.com&sz=128',
+    image: 'https://images.unsplash.com/photo-1555689502-c4b22d76c56f?auto=format&fit=crop&w=600&h=240&q=80',
     name: 'Gap Adaptive',
     company: 'Gap',
     description:
@@ -231,6 +243,7 @@ export const brands: Brand[] = [
   {
     id: 'lands-end-adaptive',
     logo: 'https://www.google.com/s2/favicons?domain=landsend.com&sz=128',
+    image: 'https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=600&h=240&q=80',
     name: "Lands' End Adaptive",
     company: "Lands' End",
     description:
@@ -249,6 +262,7 @@ export const brands: Brand[] = [
   {
     id: 'ffora',
     logo: 'https://www.google.com/s2/favicons?domain=ffora.com&sz=128',
+    image: 'https://images.unsplash.com/photo-1548036161-166a6538a094?auto=format&fit=crop&w=600&h=240&q=80',
     name: 'Ffora',
     description:
       'Stylish wheelchair bag and accessory system that clips securely to any wheelchair. Modular bags that work like a hands-free purse or backpack for daily use.',
@@ -268,6 +282,7 @@ export const brands: Brand[] = [
   {
     id: 'adaptations-by-adrian',
     logo: 'https://www.google.com/s2/favicons?domain=adaptationsbyadrian.com&sz=128',
+    image: 'https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?auto=format&fit=crop&w=600&h=240&q=80',
     name: 'Adaptations by Adrian',
     description:
       'Custom adaptive clothing tailored to individual needs. Specializes in one-of-a-kind garments modified for wheelchair users, amputees, and people with specific dressing challenges.',
@@ -285,6 +300,7 @@ export const brands: Brand[] = [
   {
     id: 'primary-adaptive',
     logo: 'https://www.google.com/s2/favicons?domain=primary.com&sz=128',
+    image: 'https://images.unsplash.com/photo-1503944168849-8bf86875bcd8?auto=format&fit=crop&w=600&h=240&q=80',
     name: 'Primary Adaptive',
     company: 'Primary',
     description:
@@ -304,6 +320,7 @@ export const brands: Brand[] = [
   {
     id: 'open-style-lab',
     logo: 'https://www.google.com/s2/favicons?domain=openstylelab.org&sz=128',
+    image: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=600&h=240&q=80',
     name: 'Open Style Lab',
     description:
       'A research-driven nonprofit designing wearable solutions for people with disabilities. Products include the FFORA bag and research partnerships. Focus on visual and mobility impairments.',
@@ -323,6 +340,7 @@ export const brands: Brand[] = [
   {
     id: 'columbia-adaptive',
     logo: 'https://www.google.com/s2/favicons?domain=columbia.com&sz=128',
+    image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=600&h=240&q=80',
     name: 'Columbia Adaptive Outerwear',
     company: 'Columbia Sportswear',
     description:
