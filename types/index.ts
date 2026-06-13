@@ -37,6 +37,42 @@ export interface Brand {
   styles: StyleCategory[]
 }
 
+export interface AdaptiveBrand {
+  id: string
+  name: string
+  country: string
+  website: string
+  singaporeAvailability: string
+  shippingNotes: string
+  categories: string[]
+  adaptiveFocus: string[]
+  notes: string
+}
+
+export interface AdaptiveProduct {
+  id: string
+  brandId: string
+  brandName: string
+  name: string
+  productType: string
+  gender: string
+  category: string
+  price?: string
+  currency?: string
+  productUrl: string
+  imageUrl?: string | null
+  singaporeAvailability: string
+  adaptiveFeatures: string[]
+  bestFor: string[]
+  closureType?: string
+  entryType: 'product' | 'category' | 'service' | 'initiative'
+  sourceNotes: string
+  // Expansion fields — populate as data becomes available
+  sizes?: string[]
+  colours?: string[]
+  inStock?: boolean
+}
+
 export interface ChatMessage {
   role: 'user' | 'assistant'
   content: string

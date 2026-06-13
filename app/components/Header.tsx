@@ -29,6 +29,21 @@ export default function Header({ onOpenChat }: HeaderProps) {
           WearAble
         </a>
 
+        <nav className="hidden sm:flex items-center gap-1">
+          <a
+            href="/browse"
+            className="text-sm font-medium text-gray-600 hover:text-indigo-600 px-3 py-1.5 rounded-lg hover:bg-gray-100 transition-colors"
+          >
+            Browse Brands
+          </a>
+          <a
+            href="/singapore"
+            className="text-sm font-medium text-gray-600 hover:text-teal-600 px-3 py-1.5 rounded-lg hover:bg-gray-100 transition-colors flex items-center gap-1"
+          >
+            🇸🇬 Singapore
+          </a>
+        </nav>
+
         <div className="flex items-center gap-3">
           {onOpenChat && (
             <button
